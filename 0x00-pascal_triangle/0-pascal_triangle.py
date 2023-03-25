@@ -20,4 +20,4 @@ def pascal_triangle(n):
             for j in range(1, i):
                 lists[i].append(lists[i - 1][j - 1] + lists[i - 1][j])
             lists[i].append(1)
-    return 
+    return lists
