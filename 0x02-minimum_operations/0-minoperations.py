@@ -16,6 +16,7 @@ def copy_all(h, c, o):
     o += 1
     return (c, o)
 
+
 def paste_(h, c, o):
     """
         pastes the content of c to h
@@ -28,6 +29,7 @@ def paste_(h, c, o):
     h = 'H' * (len(h) + c)
     o += 1
     return (h, o)
+
 
 def minOperations(n):
     """
