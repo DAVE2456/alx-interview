@@ -12,5 +12,5 @@ def minOperations(n):
         while n % min_op == 0:
             op += min_op
             n = n / min_op
-         min_op += 1
-     return op
+        min_op += 1
+    return op
