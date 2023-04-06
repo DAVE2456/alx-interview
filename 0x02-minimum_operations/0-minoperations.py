@@ -1,17 +1,54 @@
-#!/user/bin/python3
+#!/usr/bin/python3
 """
-Amethod that calculates the fewest number of operations
-needed to result in exactly n H characters in the file
+    0-minoperations.py: cminOperations(n)
 """
+
+
+def copy_all(h, c, o):
+    """
+        copies the content of h to c
+        Args:
+            h: 'H'
+            c: current counter
+            0: operation counter
+        Returns: tuple of current counter and operation counter
+    """
+    c = len(h)
+    o += 1
+    return (c, o)
+
+
+def paste_(h, c, o):
+    """
+        pastes the content of c to h
+        Args:
+            h: 'H'
+            c: current counter
+            0: operation counter
+        Returns: tuple of h and operation counter
+    """
+    h = 'H' * (len(h) + c)
+    o += 1
+    return (h, o)
 
 
 def minOperations(n):
-
-    op = 0
-    min_op = 2
-    while n > 1:
-        while n % min_op == 0:
-            op += min_op
-            n = n / min_op
-        min_op += 1
-    return op
+    """
+        counts the operation done to perfom the given task
+        Args:
+            n: number of times for 'H'
+        Returns: the number of operations done
+    """
+    h = 'H'
+    current = None
+    operation = 0
+    while True:
+        if n == len(h):
+            return operation
+        elif n < len(h):
+            return 0
+        if n % len(h) != 0:
+            (h, operation) = paste_(h, current, operation)
+        else:
+            (current, operation) = copy_all(h, current, operation)
+            (h, operation) = paste_(h, current, operation)
