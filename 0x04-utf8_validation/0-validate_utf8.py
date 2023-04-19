@@ -7,10 +7,12 @@ def validUTF8(data):
        Determines if given data set                                             
        represents a valid UTF-8 encoding                                            """                                                                         
     def check(num):                                                             
-        mask = 0b1000000 # 128                                                          i = 0                                                                   
+        mask = 0b1000000 # 128
+        i = 0                                                                   
         while num & mask: # 11000110(198) & 10000000(128)                       
             mask >>= 1                                                          
-            i += 1                                                                      return i                                                                
+            i += 1
+        return i                                                                
                                                                                 
     i = 0                                                                       
     while i < len(data):                                                        
