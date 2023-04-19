@@ -10,22 +10,22 @@ def validUTF8(data):
                                                                          
     def check(num):                                                             
         mask = 0b10000000 # 128
-        i = 0                                                                   
+        a = 0                                                                   
         while num & mask: # 11000110(198) & 10000000(128)                       
             mask >>= 1                                                          
-            i += 1
-        return i                                                                
+            a += 1
+        return a                                                                
                                                                                 
-    i = 0                                                                       
-    while i < len(data):                                                        
-        j = check(data[i])                                                      
-        a = i + j - (j != 0)                                                    
-        i += 1                                                                  
-        if j == 1 or j > 4 or a >= len(data):                                     
+    a = 0                                                                       
+    while a < len(data):                                                        
+        b = check(data[a])                                                      
+        c = a + b - (b != 0)                                                    
+        a += 1                                                                  
+        if b == 1 or b > 4 or c >= len(data):                                     
             return False                                                        
-        while i < len (data) and i <= a:                                        
-            curnt = check(data[i])                                              
+        while a < len (data) and a <= c:                                        
+            curnt = check(data[a])                                              
             if curnt != 1:                                                      
                 return False                                                    
-            i += 1                                                              
+            a += 1                                                              
     return True
