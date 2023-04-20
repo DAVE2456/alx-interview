@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 
-
+import re
 import sys
-status_codes = {'200: 0, 301: 0, 400: 0, 401: 0,
-                '403: 0, 404: 0, 405: 0, 500: 0}
-print_counter = 0
+status_codes = {'200': 0, '301': 0, '400': 0, '401': 0,
+                '403': 0, '404': 0, '405': 0, '500': 0}
+ print_counter= 0
 size_summation = 0
 
 
@@ -37,3 +37,4 @@ if __name__ == "__main__":
         print_logs()
     except KeyboardInterrupt:
         print_logs()
+
