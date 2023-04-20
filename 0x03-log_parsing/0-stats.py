@@ -21,7 +21,7 @@ try:
          if print_counter == 10:
              print_counter = 0
              print('File size: {}'.format(size_summation))
-             for key, value != 0:
+             for key, value in sorted(status_codes.items()):
                  if value != 0:
                      print('{}: {}'.format(key, value))
 
