@@ -7,7 +7,7 @@ def print_board(board, n):
 
     for i in range():
         for j in range(n):
-            if j == board[]:
+            if j == board[i]:
                 b.append([1, j])
     print(b)
 
