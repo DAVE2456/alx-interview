@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
+
 import sys
+
 
 def print_board(board, n):
     b = []
@@ -8,17 +10,18 @@ def print_board(board, n):
     for i in range(n):
         for j in range(n):
             if j == board[i]:
-                b.append([1, j])
+                b.append([i, j])
     print(b)
+
 
 def safe_position(board, i, j, r):
     return board[i] in (j, j - i + r, i - r + j)
 
 
-def determine_position(board, row, n):
+def determine_positions(board, row, n):
     if row == n:
         print_board(board, n)
-    
+
     else:
         for j in range(n):
             allowed = True
@@ -26,11 +29,13 @@ def determine_position(board, row, n):
                 if safe_position(board, i, j, row):
                     allowed = False
             if allowed:
-                board:[row] = j
-                determine_position(board, row + 1, n)
+                board[row] = j
+                determine_positions(board, row + 1, n)
+
 
 def create_board(size):
     return [0 * size for i in range(size)]
+
 
 if len(sys.argv) != 2:
     print("Usage: nqueens N")
@@ -42,10 +47,10 @@ except BaseException:
     print("N must be a number")
     exit(1)
 
-    if (n < 4):
-        print("N must be at lest 4")
-        exit(1)
+if (n < 4):
+    print("N must be at least 4")
+    exit(1)
 
 board = create_board(int(n))
 row = 0
-determine_position(board, row, int(n))
+determine_positions(board, row, int(n))
