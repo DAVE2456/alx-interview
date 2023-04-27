@@ -5,7 +5,7 @@ import sys
 def print_board(board, n):
     b = []
 
-    for i in range():
+    for i in range(n):
         for j in range(n):
             if j == board[i]:
                 b.append([1, j])
@@ -20,7 +20,7 @@ def determine_position(board, row, n):
         print_board(board, n)
     
     else:
-        for j in range():
+        for j in range(n):
             allowed = True
             for i in range(row):
                 if safe_position(board, i, j, row):
@@ -38,7 +38,7 @@ if len(sys.argv) != 2:
 
 try:
     n = int(sys.argv[1])
-except BaseExpection:
+except BaseException:
     print("N must be a number")
     exit(1)
 
@@ -49,5 +49,3 @@ except BaseExpection:
 board = create_board(int(n))
 row = 0
 determine_position(board, row, int(n))
-
-    
