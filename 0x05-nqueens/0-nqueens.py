@@ -46,7 +46,7 @@ except BaseExpection:
         print("N must be at lest 4")
         exit(1)
 
-board + create_board(int(n))
+board = create_board(int(n))
 row = 0
 determine_position(board, row, int(n))
 
