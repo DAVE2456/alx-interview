@@ -5,7 +5,7 @@ const request = require('request')
 const endpoint = 'https://swapi-api.hbtn.io/api';
 const movieId = process.argv[2];
 
-request(url, async (err, respons, _body) => {
+request(url, async (err, respons, body) => {
   if (err) {
     console.log(err);
     return;
@@ -14,7 +14,7 @@ request(url, async (err, respons, _body) => {
   const charactersArray = JSON.parse(respons.body).characters;
   for (const character of charactersArray) {
     await new promise((resolve, reject) => {
-      request(character, (err, _respons body) => {
+      request(character, (err, respons, body) => {
         if (err) {
           console.log(err);
           reject();
