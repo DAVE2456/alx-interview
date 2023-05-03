@@ -3,7 +3,7 @@ const request = require('request')
 
 
 const movieId = process.argv[2];
-const endpoint = `https://swapi-api.hbtn.io/api/${movieId}`;
+const endpoint = `https://swapi-api.hbtn.io/api/films${movieId}`;
 
 request(url, async (err, res, _body) => {
   if (err) {
