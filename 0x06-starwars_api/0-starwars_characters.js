@@ -3,17 +3,17 @@ const request = require('request')
 
 
 const movieId = process.argv[2];
-const endpoint = `https://swapi-api.hbtn.io/api/films${movieId}`;
+const endpoint = `https://swapi-api.hbtn.io/api/films/${movieId}`;
 
-request(url, async (err, res, _body) => {
+request(endpoint, async (err, res, _body) => {
   if (err) {
     console.log(err);
     return;
   }
 
-  const charactersArray = JSON.parse(respons.body).characters;
+  const charactersArray = JSON.parse(res.body).characters;
   for (const character of charactersArray) {
-    await new promise((resolve, reject) => {
+    await new Promise((resolve, reject) => {
       request(character, (err, _res, body) => {
         if (err) {
           console.log(err);
