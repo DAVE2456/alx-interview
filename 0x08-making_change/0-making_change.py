@@ -1,21 +1,18 @@
 #!/usr/bin/python3
+"""2D matrix"""
 
 
 def makeChange(coins, total):
     if total <= 0:
         return 0
 
-    # Initialize the memoization table with infinity values
-    memo = [float('inf')] * (total + 1)
-
-    # Base case: zero coins needed to make zero total
-    memo[0] = 0
-
-    # Fill in the memoization table bottom-up
-    for i in range(1, total + 1):
-        for coin in coins:
-            if coin <= i:
-                memo[i] = min(memo[i], memo[i - coin] + 1)
-
-    # Return the fewest number of coins needed to make the total
-    return memo[total] if memo[total] != float('inf') else -1
+    current_total = 0
+    coin_used = 0
+    coins = sorted(coins, reverse=True)
+    for coin in coins:
+        r = (total-current_total)//coin
+        current_total += r*coin
+        coin_used += r
+        if current_total == total:
+            return coin_used
+    return -1
