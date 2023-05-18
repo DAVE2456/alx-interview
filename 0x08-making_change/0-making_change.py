@@ -1,16 +1,21 @@
 #!/usr/bin/python3
 
+
 def makeChange(coins, total):
     if total <= 0:
         return 0
 
-    
-    num_coins = [float('inf')] * (total + 1)
-    num_coins[0] = 0
+    # Initialize the memoization table with infinity values
+    memo = [float('inf')] * (total + 1)
 
-   
-    for coin in coins:
-        for amount in range(coin, total + 1):
-            num_coins[amount] = min(num_coins[amount], 1 + num_coins[amount - coin])
+    # Base case: zero coins needed to make zero total
+    memo[0] = 0
 
-    return num_coins[total] if num_coins[total] != float('inf') else -1
+    # Fill in the memoization table bottom-up
+    for i in range(1, total + 1):
+        for coin in coins:
+            if coin <= i:
+                memo[i] = min(memo[i], memo[i - coin] + 1)
+
+    # Return the fewest number of coins needed to make the total
+    return memo[total] if memo[total] != float('inf') else -1
