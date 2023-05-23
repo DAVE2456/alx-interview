@@ -1,14 +1,17 @@
 #!/usr/bin/python3
 
+
 def island_perimeter(grid):
-    rows, cols = len(grid), len(grid[0])
     perimeter = 0
-    for r in range(rows):
-        for c in range(cols):
-            if grid[r][c] == 1:
+    for i in range(len(grid)):
+        for j in range(len(grid[i])):
+            if grid[i][j] == 1:
                 perimeter += 4
-                if r > 0 and grid[r-1][c] == 1:
+                # cells with 2 sides touching other cells on top and bottom
+                if i > 0 and grid[i - 1][j] == 1:
                     perimeter -= 2
-                if c > 0 and grid[r][c-1] == 1:
+                # cells with 2 sides touching other cells left and right
+                if j > 0 and grid[i][j - 1] == 1:
                     perimeter -= 2
+
     return perimeter
